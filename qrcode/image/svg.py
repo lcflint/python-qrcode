@@ -102,6 +102,7 @@ class SvgPathImage(SvgImage):
     def __init__(self, *args, **kwargs):
         self._points = set()
         self.fill_color = kwargs.get("fill_color")
+        print("qr package kwarg pass: " + self.fill_color)
 
         super(SvgPathImage, self).__init__(*args, **kwargs)
 
