@@ -96,10 +96,13 @@ class SvgPathImage(SvgImage):
     between individual QR points).
     """
 
+    """Default QR path style."""
     QR_PATH_STYLE = 'fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none'
 
     def __init__(self, *args, **kwargs):
         self._points = set()
+        self.fill_color = kwargs.get("fill_color")
+
         super(SvgPathImage, self).__init__(*args, **kwargs)
 
     def _svg(self, viewBox=None, **kwargs):
@@ -132,6 +135,8 @@ class SvgPathImage(SvgImage):
 
     def make_path(self):
         subpaths = self._generate_subpaths()
+        if (self.fill_color != None):
+            QR_PATH_STYLE = 'fill:' + self.fill_color + '; fill-opacity:1; fill-rule:nonzero; stroke:none'
 
         return ET.Element(
             ET.QName("path"),
