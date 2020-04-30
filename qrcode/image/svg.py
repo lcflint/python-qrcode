@@ -141,7 +141,7 @@ class SvgPathImage(SvgImage):
 
         return ET.Element(
             ET.QName("path"),
-            style=self.QR_PATH_STYLE,
+            style=QR_PATH_STYLE,
             d=' '.join(subpaths),
             id="qr-path"
         )
